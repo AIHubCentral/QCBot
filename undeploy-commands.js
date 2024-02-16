@@ -6,5 +6,5 @@ const clientId = process.env.clientId;
 const rest = new REST().setToken(token);
 
 rest.put(Routes.applicationCommands(clientId), { body: [] })
-	.then(() => console.log('Successfully deleted all commands from all guilds.'))
+	.then(() => console.log('Successfully removed all application (/) commands.'))
 	.catch(console.error);
