@@ -1,0 +1,26 @@
+{
+  "name": "qcbot",
+  "version": "3.0.0",
+  "description": "A bot made to semi-automate and simplify the process of getting the Model Maker role in AI Hub.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antasma245/QCBot.git"
+  },
+  "author": "Antasma245",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Antasma245/QCBot/issues"
+  },
+  "homepage": "https://github.com/Antasma245/QCBot#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.4",
+    "sequelize": "^6.37.0",
+    "sqlite3": "^5.1.7",
+    "undici": "^6.6.2"
+  }
+}
