@@ -38,7 +38,6 @@ module.exports = {
             option.setName('avatar')
                 .setDescription('Set the bot avatar')),
 	async execute(interaction) {
-
 		await interaction.deferReply({ ephemeral: true });
 		
         if (interaction.user.id!=myUserId) {

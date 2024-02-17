@@ -24,7 +24,6 @@ module.exports = {
             option.setName('edit')
                 .setDescription('True or false')),
     async execute(interaction) {
-
         await interaction.deferReply({ ephemeral: true });
 
         if (!await interaction.inGuild()) {
