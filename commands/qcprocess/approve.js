@@ -91,7 +91,7 @@ module.exports = {
         if (approvalLogsId) {
             try {
                 const approvalLogsThread = await interaction.guild.channels.fetch(approvalLogsId);
-                await approvalLogsThread.send({ content: `<@460577350900514837>`, embeds: [new EmbedBuilder().setColor(`e74c3c`).setTitle('New voice model approved').setDescription(`**ID:** ${inputSubmissionId}\n**Submitted by:** <@${userId}>\n**Link:** ${submissionLink}\n\n**Approved by:** <@${interaction.user.id}>\n**Comment:** *${comment}*`)] });
+                await approvalLogsThread.send({ embeds: [new EmbedBuilder().setColor(`e74c3c`).setTitle('New voice model approved').setDescription(`**ID:** ${inputSubmissionId}\n**Submitted by:** <@${userId}>\n**Link:** ${submissionLink}\n\n**Approved by:** <@${interaction.user.id}>\n**Comment:** *${comment}*`)] });
             } catch (error) {
                 console.error(`New error report! Occured on ${new Date().toUTCString()} while executing '/${interaction.commandName}'`);
                 console.log(error);
