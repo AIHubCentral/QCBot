@@ -51,11 +51,15 @@ module.exports = {
         const member = await interaction.guild.members.fetch(userId);
         const modelRole = await interaction.guild.roles.fetch(modelRoleId);
 
+        let completionState = false;
+
         try {
             await member.roles.add(modelRole);
 
             await SubmissionsTable.destroy({ where: { dbSubmissionId: inputSubmissionId } });
     
+            completionState = true;
+
             const tag2 = await StatsTable.findOne({ where: { dbQcId: interaction.user.id } });
     
             if (!tag2) {
@@ -88,7 +92,7 @@ module.exports = {
             }
 		}
 
-        if (approvalLogsId) {
+        if (approvalLogsId && completionState==true) {
             try {
                 const approvalLogsThread = await interaction.guild.channels.fetch(approvalLogsId);
                 await approvalLogsThread.send({ embeds: [new EmbedBuilder().setColor(`e74c3c`).setTitle('New voice model approved').setDescription(`**ID:** ${inputSubmissionId}\n**Submitted by:** <@${userId}>\n**Link:** ${submissionLink}\n\n**Approved by:** <@${interaction.user.id}>\n**Comment:** *${comment}*`)] });
