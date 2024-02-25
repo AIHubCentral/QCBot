@@ -47,8 +47,12 @@ module.exports = {
 
         const qcName = interaction.member.nickname ?? interaction.member.displayName;
 
+        let completionState = false;
+
         try {
             await SubmissionsTable.destroy({ where: { dbSubmissionId: inputSubmissionId } });
+
+            completionState = true;
 
             const tag2 = await StatsTable.findOne({ where: { dbQcId: interaction.user.id } });
     
@@ -82,7 +86,7 @@ module.exports = {
             }
 		}
 
-        if (approvalLogsId) {
+        if (approvalLogsId && completionState==true) {
             try {
                 const approvalLogsThread = await interaction.guild.channels.fetch(approvalLogsId);
                 await approvalLogsThread.send({ content: `<@460577350900514837>`, embeds: [new EmbedBuilder().setColor(`e74c3c`).setTitle('New voice model rejected').setDescription(`**ID:** ${inputSubmissionId}\n**Submitted by:** <@${userId}>\n**Link:** ${submissionLink}\n\n**Rejected by:** <@${interaction.user.id}>\n**Reason:** *${reason}*`)] });
