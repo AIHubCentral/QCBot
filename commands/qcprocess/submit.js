@@ -17,12 +17,12 @@ module.exports = {
                 .setRequired(true)
                 .setMaxLength(100))
         .addStringOption(option =>
-            option.setName('rvc')
-                .setDescription('The RVC version used for training (v1 or v2)')
+            option.setName('technology')
+                .setDescription('The technology used for training')
                 .setRequired(true)
                 .addChoices(
-                    { name: 'v1', value: 'v1' },
-                    { name: 'v2', value: 'v2' },
+                    { name: 'RVC v1', value: 'RVC v1' },
+                    { name: 'RVC v2', value: 'RVC v2' },
                 ))
         .addStringOption(option =>
             option.setName('extraction')
@@ -71,7 +71,7 @@ module.exports = {
         }
 
         const name = await interaction.options.getString('modelname');
-		const rvc = await interaction.options.getString('rvc');
+		const technology = await interaction.options.getString('technology');
         const extraction = await interaction.options.getString('extraction');
 		const epochs = await interaction.options.getInteger('epochs');
 		const link = await interaction.options.getString('link');
@@ -146,7 +146,7 @@ module.exports = {
         }
 
         try {
-            const botResponse = await interaction.channel.send({content:`## New model submission\n**Name:** ${name}\n**RVC:** ${rvc}\n**Extraction type:** ${extraction}\n**Number of epochs:** ${epochs}\n**Link:** <${link}>\n**Note:** ${note}\n**Submission ID:** ${submissionId}\n\nSubmitted by <@${userId}> using the </${interaction.commandName}:${interaction.commandId}> command`, files:[image, demo]});
+            const botResponse = await interaction.channel.send({content:`## New model submission\n**Name:** ${name}\n**Technology:** ${technology}\n**Extraction type:** ${extraction}\n**Number of epochs:** ${epochs}\n**Link:** <${link}>\n**Note:** ${note}\n**Submission ID:** ${submissionId}\n\nSubmitted by <@${userId}> using the </${interaction.commandName}:${interaction.commandId}> command`, files:[image, demo]});
             
             const submissionLink = `https://discord.com/channels/${interaction.guild.id}/${interaction.channel.id}/${botResponse.id}`;
 
