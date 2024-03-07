@@ -21,8 +21,7 @@ module.exports = {
                 .setDescription('The technology used for training')
                 .setRequired(true)
                 .addChoices(
-                    { name: 'RVC v1', value: 'RVC v1' },
-                    { name: 'RVC v2', value: 'RVC v2' },
+                    { name: 'RVC', value: 'RVC' },
                 ))
         .addStringOption(option =>
             option.setName('extraction')
