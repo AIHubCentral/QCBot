@@ -37,6 +37,9 @@ module.exports = {
             const confirmation = await sentMessage.awaitMessageComponent({ time: 30_000 });
 
             if (confirmation.customId === 'confirm') {
+				const timestamp = Date.now() + 10000;
+				await interaction.editReply({content: `Restart request will be sent <t:${timestamp}:R>`, components: []});
+
 				const client = new Client(powerUrl);
 
 				const { statusCode } = await client.request({
@@ -49,9 +52,7 @@ module.exports = {
 					body: JSON.stringify({ signal: 'restart' }),
 				});
 		
-				if (statusCode === 204) {
-					await interaction.editReply({content: `Request successfully sent! Server is restarting...`, components: []});
-				} else {
+				if (statusCode !== 204) {
 					throw new Error(`Failed to restart server: ${statusCode}`);
 				}
 			
