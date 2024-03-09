@@ -1,5 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } = require('discord.js');
 const { Client } = require('undici');
+const wait = require('node:timers/promises').setTimeout;
 const env = require('dotenv').config();
 const myUserId = process.env.myUserId;
 const adminRoleId = process.env.adminRoleId;
@@ -37,8 +38,8 @@ module.exports = {
             const confirmation = await sentMessage.awaitMessageComponent({ time: 30_000 });
 
             if (confirmation.customId === 'confirm') {
-				const timestamp = Date.now() + 10000;
-				await interaction.editReply({content: `Restart request will be sent <t:${timestamp}:R>`, components: []});
+				await interaction.editReply({content: `Restart request will be sent <t:${Math.floor(new Date().getTime() / 1000) + 10}:R>`, components: []});
+				await wait(10000);
 
 				const client = new Client(powerUrl);
 
