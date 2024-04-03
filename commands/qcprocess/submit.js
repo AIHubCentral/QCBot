@@ -22,6 +22,7 @@ module.exports = {
                 .setRequired(true)
                 .addChoices(
                     { name: 'RVC', value: 'RVC' },
+                    { name: 'GPT-SoVITS', value: 'GPT-SoVITS' },
                 ))
         .addStringOption(option =>
             option.setName('extraction')
