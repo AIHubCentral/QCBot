@@ -3,6 +3,7 @@ const { StatsTable } = require('../../sequelcode');
 const env = require('dotenv').config();
 const guildId = process.env.guildId;
 const modRoleId = process.env.modRoleId;
+const leadQcRoleId = process.env.leadQcRoleId;
 const adminRoleId = process.env.adminRoleId;
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
         if (!await interaction.inGuild() || interaction.guild.id != guildId) {
             const validGuild = await interaction.client.guilds.fetch(guildId);
             return await interaction.reply({content:`This command can only be used in **${validGuild.name}**.`, ephemeral: true });
-        } else if (!interaction.member.roles.cache.has(modRoleId) && !interaction.member.roles.cache.has(adminRoleId)) {
+        } else if (!interaction.member.roles.cache.has(modRoleId) && !interaction.member.roles.cache.has(leadQcRoleId) && !interaction.member.roles.cache.has(adminRoleId)) {
             return await interaction.reply({content:`You do not have permission to use this command.`, ephemeral: true });
         }
 
