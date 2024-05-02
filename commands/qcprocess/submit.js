@@ -92,14 +92,14 @@ module.exports = {
 
         if (link.includes('https://huggingface.co/')) {
             if (link.includes('/blob/')) {
-                return await interaction.editReply(`Invalid Huggingface link. Please make sure to get the "resolve" link and not the "blob" one. Follow this tutorial to make sure you get the correct Huggingface link: <https://rentry.org/fdg_guide_newer>.`);
+                return await interaction.editReply(`Invalid Huggingface link. Please make sure to get the "resolve" link and not the "blob" one. Follow this tutorial to make sure you get the correct Huggingface link: <https://docs.aihub.wtf/extra/model-maker-role/>.`);
             } else if (!link.includes('/resolve/')) {
-                return await interaction.editReply(`Invalid Huggingface link. Your link must be a "resolve" one. Follow this tutorial to make sure you get the correct Huggingface link: <https://rentry.org/fdg_guide_newer>.`);
+                return await interaction.editReply(`Invalid Huggingface link. Your link must be a "resolve" one. Follow this tutorial to make sure you get the correct Huggingface link: <https://docs.aihub.wtf/extra/model-maker-role/>.`);
             }
         } else if (link.includes('https://drive.google.com/') || link.includes('https://mega.nz/')) {
-            return await interaction.editReply(`Looks like you entered a Google Drive / Mega link. Please note that all models are required to have a Huggingface link. Follow this tutorial to make sure you get the correct Huggingface link: <https://rentry.org/fdg_guide_newer>.`);
+            return await interaction.editReply(`Looks like you entered a Google Drive / Mega link. Please note that all models are required to have a Huggingface link. Follow this tutorial to make sure you get the correct Huggingface link: <https://docs.aihub.wtf/extra/model-maker-role/>.`);
         } else {
-            return await interaction.editReply(`Invalid link. Please note that all models are required to have a Huggingface link. Follow this tutorial to make sure you get the correct Huggingface link: <https://rentry.org/fdg_guide_newer>.\nUnfortunately, we do not accept Kits.ai models anymore.`);
+            return await interaction.editReply(`Invalid link. Please note that all models are required to have a Huggingface link. Follow this tutorial to make sure you get the correct Huggingface link: <https://docs.aihub.wtf/extra/model-maker-role/>.\nUnfortunately, we do not accept Kits.ai models anymore.`);
         }
 
         if (extraction=='pm' || extraction=='harvest' || extraction=='dio') {
